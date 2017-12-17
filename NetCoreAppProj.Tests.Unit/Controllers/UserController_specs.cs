@@ -22,7 +22,21 @@
         }
 
         [TestMethod]
-        public async Task When_create_user_send_then_returns_badrequest()
+        public async Task When_null_user_sends_then_returns_BadRequest()
+        {
+            var requestUri = "user/create-user";
+            var content = new StringContent(
+                JsonConvert.SerializeObject(null),
+                Encoding.UTF8,
+                "application/json");
+            var request = new HttpRequestMessage(HttpMethod.Post, requestUri) { Content = content };
+            var response = await Client.SendAsync(request);
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [TestMethod]
+        public async Task When_create_user_send_then_returns_Badrequest()
         {
             var user = new User(Guid.NewGuid(), "a", "Dd", "ddd");
             var requestUri = "user/create-user";
