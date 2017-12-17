@@ -1,11 +1,10 @@
 ﻿namespace NetCoreAppProj.Controllers
 {
     using System;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using NetCoreAppProj.Models.Identity;
 
-    [Route("login")]
+    [Route("user")]
     public class LoginController : Controller
     {
        [HttpPost("create-user")]

@@ -8,7 +8,7 @@
     {
         public IActionResult Index()
         {
-            return Ok();
+            return View();
         }
 
         public IActionResult About()
