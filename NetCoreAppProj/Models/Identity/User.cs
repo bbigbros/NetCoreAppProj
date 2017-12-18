@@ -5,14 +5,6 @@
 
     public class User
     {
-        public User(Guid userId, string username, string email, string password)
-        {
-            UserId = userId;
-            Username = username;
-            Email = email;
-            Password = password;
-        }
-
         public Guid UserId { get; }
 
         [Required]
