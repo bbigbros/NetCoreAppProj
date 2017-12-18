@@ -10,9 +10,9 @@
     public class User_specs
     {
         [TestMethod]
-        public void Sut_has_UserId_property()
+        public void Sut_has_Id_property()
         {
-            typeof(User).Should().HaveProperty<Guid>("UserId");
+            typeof(User).Should().HaveProperty<Guid>("Id");
         }
 
         [TestMethod]
@@ -21,7 +21,7 @@
             typeof(User).Should().HaveProperty<string>("Username")
                 .Which
                 .Should()
-                .NotBeWritable();
+                .BeWritable();
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@
             typeof(User).Should().HaveProperty<string>("Email")
                 .Which
                 .Should()
-                .NotBeWritable();
+                .BeWritable();
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@
             typeof(User).Should().HaveProperty<string>("Password")
                 .Which
                 .Should()
-                .NotBeWritable();
+                .BeWritable();
         }
 
         [TestMethod]
