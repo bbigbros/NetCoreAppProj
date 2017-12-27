@@ -20,6 +20,28 @@ namespace NetCoreAppProj.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NetCoreAppProj.Models.Board.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Author")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateAt");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(128);
+
+                    b.Property<DateTime>("UpdateAt");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("NetCoreAppProj.Models.Identity.User", b =>
                 {
                     b.Property<Guid>("Id")

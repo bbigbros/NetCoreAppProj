@@ -1,5 +1,6 @@
 ﻿namespace NetCoreAppProj
 {
+    using System;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -33,10 +34,8 @@
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+
+            app.UseExceptionHandler("/Home/Error");
 
             app.UseStaticFiles();
 
