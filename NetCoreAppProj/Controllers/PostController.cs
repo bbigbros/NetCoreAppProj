@@ -1,5 +1,6 @@
 ﻿namespace NetCoreAppProj.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNetCore.Mvc;
@@ -16,14 +17,21 @@
             _dbContext = context;
         }
 
-        public IEnumerable<Post> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-            return _dbContext.Posts.ToList();
+            return View(_dbContext.Posts.ToList());
         }
 
-        [HttpPost("create")]
-        public IActionResult Create(
-            [FromBody]Post post)
+        [HttpGet("/post/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost("/post/postcreated")]
+        public IActionResult PostCreated(
+            [Bind("Title, Author, Content")]Post post)
         {
             if (post == null)
             {
@@ -38,7 +46,7 @@
             _dbContext.Posts.Add(post);
             _dbContext.SaveChanges();
 
-            return Ok();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
