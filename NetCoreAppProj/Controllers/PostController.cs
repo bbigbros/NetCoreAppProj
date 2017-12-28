@@ -1,6 +1,5 @@
 ﻿namespace NetCoreAppProj.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNetCore.Mvc;
@@ -27,6 +26,11 @@
             [FromBody]Post post)
         {
             if (post == null)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid == false)
             {
                 return BadRequest();
             }

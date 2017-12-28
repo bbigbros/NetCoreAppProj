@@ -12,7 +12,7 @@
         [TestMethod]
         public void Sut_has_Id_property()
         {
-            typeof(User).Should().HaveProperty<Guid>("Id");
+            typeof(User).Should().HaveProperty<int>("Id");
         }
 
         [TestMethod]

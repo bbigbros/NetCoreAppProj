@@ -26,13 +26,16 @@ namespace NetCoreAppProj.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author")
+                        .IsRequired()
                         .HasMaxLength(128);
 
-                    b.Property<string>("Content");
+                    b.Property<string>("Content")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreateAt");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(128);
 
                     b.Property<DateTime>("UpdateAt");
@@ -44,7 +47,7 @@ namespace NetCoreAppProj.Migrations
 
             modelBuilder.Entity("NetCoreAppProj.Models.Identity.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email")

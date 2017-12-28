@@ -15,10 +15,10 @@ namespace NetCoreAppProj.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Author = table.Column<string>(maxLength: 128, nullable: true),
-                    Content = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(maxLength: 128, nullable: false),
+                    Content = table.Column<string>(nullable: false),
                     CreateAt = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(maxLength: 128, nullable: true),
+                    Title = table.Column<string>(maxLength: 128, nullable: false),
                     UpdateAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -30,7 +30,8 @@ namespace NetCoreAppProj.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(maxLength: 128, nullable: false),
                     Password = table.Column<string>(nullable: false),
                     Username = table.Column<string>(maxLength: 128, nullable: false)
