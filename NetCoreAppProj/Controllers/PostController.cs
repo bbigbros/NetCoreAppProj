@@ -33,6 +33,7 @@
         public IActionResult PostCreated(
             [FromForm]Post post)
         {
+            Console.WriteLine("Hello Test");
             if (post == null)
             {
                 return BadRequest();

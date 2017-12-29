@@ -78,9 +78,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
@@ -104,9 +104,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
@@ -130,9 +130,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
@@ -156,9 +156,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
@@ -182,9 +182,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
@@ -208,9 +208,9 @@
                 UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
-                JsonConvert.SerializeObject(post),
+                CreateHttpBody(post),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
                 Content = content
