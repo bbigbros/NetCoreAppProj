@@ -11,7 +11,7 @@ using System;
 namespace NetCoreAppProj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171229083411_InitialCreate")]
+    [Migration("20171229090432_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

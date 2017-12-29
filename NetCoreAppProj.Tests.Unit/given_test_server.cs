@@ -25,8 +25,7 @@
         public void ConfigureServiceDouble(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options =>
-                options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NetCoreAppProj;Trusted_Connection=True;"));
+                options => options.UseInMemoryDatabase("InMemoryDb"));
         }
     }
 }

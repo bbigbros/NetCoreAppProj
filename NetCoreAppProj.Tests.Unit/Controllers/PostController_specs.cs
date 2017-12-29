@@ -29,7 +29,7 @@
             var content = new StringContent(
                 JsonConvert.SerializeObject(null),
                 Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri) { Content = content };
             var response = await Client.SendAsync(request);
 
