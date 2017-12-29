@@ -31,13 +31,14 @@
 
         [HttpPost("/post/postcreated")]
         public IActionResult PostCreated(
-            [Bind("Title, Author, Content")]Post post)
+            [FromForm]Post post)
         {
             if (post == null)
             {
                 return BadRequest();
             }
 
+            Console.WriteLine(post.Author == null ? "null!" : "Notnull");
             if (ModelState.IsValid == false)
             {
                 return BadRequest();

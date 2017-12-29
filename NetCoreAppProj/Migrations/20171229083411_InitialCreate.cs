@@ -17,9 +17,9 @@ namespace NetCoreAppProj.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Author = table.Column<string>(maxLength: 128, nullable: false),
                     Content = table.Column<string>(nullable: false),
-                    CreateAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 128, nullable: false),
-                    UpdateAt = table.Column<DateTime>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

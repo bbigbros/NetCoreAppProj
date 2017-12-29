@@ -11,7 +11,7 @@ using System;
 namespace NetCoreAppProj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171228004235_InitialCreate")]
+    [Migration("20171229083411_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,13 +33,13 @@ namespace NetCoreAppProj.Migrations
                     b.Property<string>("Content")
                         .IsRequired();
 
-                    b.Property<DateTime>("CreateAt");
+                    b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(128);
 
-                    b.Property<DateTime>("UpdateAt");
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 

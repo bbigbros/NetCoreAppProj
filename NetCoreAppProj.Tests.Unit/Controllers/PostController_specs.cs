@@ -46,14 +46,14 @@
                 Title = fixture.Create<string>(),
                 Author = fixture.Create<string>(),
                 Content = fixture.Create<string>(),
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
 
             var content = new StringContent(
-               JsonConvert.SerializeObject(post),
+               CreateHttpBody(post),
                Encoding.UTF8,
-                "application/json");
+                "application/x-www-form-urlencoded");
 
             var request = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
@@ -74,8 +74,8 @@
                 Title = null,
                 Author = fixture.Create<string>(),
                 Content = fixture.Create<string>(),
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -100,8 +100,8 @@
                 Title = string.Empty,
                 Author = fixture.Create<string>(),
                 Content = fixture.Create<string>(),
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -126,8 +126,8 @@
                 Title = fixture.Create<string>(),
                 Author = null,
                 Content = fixture.Create<string>(),
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -152,8 +152,8 @@
                 Title = fixture.Create<string>(),
                 Author = string.Empty,
                 Content = fixture.Create<string>(),
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -178,8 +178,8 @@
                 Title = fixture.Create<string>(),
                 Author = fixture.Create<string>(),
                 Content = null,
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -204,8 +204,8 @@
                 Title = fixture.Create<string>(),
                 Author = fixture.Create<string>(),
                 Content = string.Empty,
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
             };
             var content = new StringContent(
                 JsonConvert.SerializeObject(post),
@@ -218,6 +218,14 @@
             var response = await Client.SendAsync(request);
 
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        private string CreateHttpBody(Post post)
+        {
+            string httpBody = $"Title={post.Title}&Author={post.Author}&" +
+                              $"Content={post.Content}&CreatedAt={post.CreatedAt}" +
+                              $"&UpdatedAt={post.UpdatedAt}";
+            return httpBody;
         }
     }
 }
