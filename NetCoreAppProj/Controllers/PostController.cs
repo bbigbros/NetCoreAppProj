@@ -33,13 +33,11 @@
         public IActionResult PostCreated(
             [FromForm]Post post)
         {
-            Console.WriteLine("Hello Test");
             if (post == null)
             {
                 return BadRequest();
             }
 
-            Console.WriteLine(post.Author == null ? "null!" : "Notnull");
             if (ModelState.IsValid == false)
             {
                 return BadRequest();
