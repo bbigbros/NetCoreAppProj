@@ -262,6 +262,23 @@
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
+        [TestMethod]
+        public async Task When_valid_post_exists_then_delete_correctly()
+        {
+            using (var context = new ApplicationDbContext(_dbContextOptions))
+            {
+                var post = await GivenPost();
+                var readPost = context.Posts.FirstOrDefault(p => p.Id == post.Id);
+                var requestUri = $"post/delete/{readPost.Id}";
+                var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+                var response = await Client.SendAsync(request);
+
+                response.StatusCode.Should().Be(HttpStatusCode.Redirect);
+                context.Posts.FirstOrDefault(p => p.Id == post.Id)
+                             .Should().BeNull();
+            }
+        }
+
         private async Task<Post> GivenPost()
         {
             var fixture = new Fixture();

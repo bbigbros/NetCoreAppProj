@@ -64,7 +64,10 @@
                 return NotFound();
             }
 
-            return Ok();
+            _dbContext.Posts.Remove(post);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
