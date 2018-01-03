@@ -1,6 +1,7 @@
 ﻿namespace NetCoreAppProj.Tests.Unit.Controllers
 {
     using System;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Text;
@@ -235,22 +236,30 @@
         }
 
         [TestMethod]
-        public async Task When_valid_post_sends_to_post_created_then_Correctly()
+        public async Task When_post_does_not_exists_then_delete_action_returns_NotFound()
         {
-            var requestUri = "post/delete";
-            var fixtrue = new Fixture();
-            var post = await GivenPost();
-            Post readPost = null;
-
             using (var context = new ApplicationDbContext(_dbContextOptions))
             {
-                readPost = context.Posts.Find(post.Id);
-            }
+                var lastPostId = context.Posts
+                                        .OrderByDescending(p => p.CreatedAt)
+                                        .FirstOrDefault();
+                var requestUri = $"post/delete/{lastPostId.Id + 1}";
 
-            readPost.Should()
-                .NotBeNull()
-                .And
-                .Be(readPost.Id == post.Id);
+                var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+                var response = await Client.SendAsync(request);
+
+                response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+            }
+        }
+
+        [TestMethod]
+        public async Task When_invalid_id_send_to_delete_action_then_returns_BadRequest()
+        {
+            var requestUri = $"post/delete/{new Fixture().Create<string>()}";
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            var response = await Client.SendAsync(request);
+
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         private async Task<Post> GivenPost()

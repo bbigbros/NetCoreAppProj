@@ -23,13 +23,13 @@
             return View(_dbContext.Posts.ToList());
         }
 
-        [HttpGet("/post/create")]
+        [HttpGet("create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost("/post/postcreated")]
+        [HttpPost("postcreated")]
         public IActionResult PostCreated(
             [FromForm]Post post)
         {
@@ -47,6 +47,24 @@
             _dbContext.SaveChanges();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var post = _dbContext.Posts.FirstOrDefault(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
     }
 }
